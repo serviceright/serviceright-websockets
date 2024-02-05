@@ -18,6 +18,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class StartServer extends Command
 {
+    protected int $lastRestart;
+
     /**
      * The name and signature of the console command.
      *
@@ -297,7 +299,7 @@ class StartServer extends Command
      *
      * @return int
      */
-    protected function getLastRestart()
+    protected function getLastRestart(): int
     {
         return Cache::get(
             'beyondcode:websockets:restart', 0
